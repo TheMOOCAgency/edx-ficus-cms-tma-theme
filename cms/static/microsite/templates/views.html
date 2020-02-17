@@ -1,0 +1,126 @@
+<div>
+  <div class="wrapper-create-element wrapper-create-microsite is-shown">
+    <div class="form-create create-microsite microsite-info" id="create-microsite-form" name="create-microsite-form" enctype="multipart/form-data">
+      <div class="wrapper-form">
+        <header>
+            <h3 class="title">{{site_name}}</h3>
+        </header>
+        <nav>
+          <input type="submit" ng-repeat="n in nav" value="{{n}}" ng-click="navClick($event)" name="{{n}}">
+        </nav>
+        <div ng-show="subViews.value == n" ng-repeat="n in nav">
+          <div class="wrapper-create-element wrapper-create-microsite is-shown">
+            <!-- static -->
+            <form class="form-create create-microsite microsite-info" id="update-microsite-form" name="update-microsite-form" enctype="multipart/form-data" ng-if="n == 'static'">
+              <fieldset>
+                <legend class="sr">Informations requises :</legend>
+                <ol class="list-input">
+                  <!-- couleur primaire -->
+                  <li class="field text required" id="field-microsite-primary_color">
+                    <label for="new-microsite-primary_color">Couleur primaire</label>
+                    <div class="color_exemple" style="background-color:{{static['primary_color']}}"></div>
+                    <input class="new-microsite-name" id="upload-microsite-color" type="text" name="primary_color" required="" placeholder="{{static['primary_color']}}" aria-describedby="tip-new-microsite-name tip-error-new-microsite-primary_color" ng-model="update_static['primary_color']" >
+                    <span class="tip tip-error is-hiding" id="tip-error-new-microsite-primary_color"></span>
+                  </li>
+                  <!-- google font -->
+                  <li class="field text required" id="field-microsite-google_font">
+                    <label for="new-microsite-google_font">Google font</label>
+                    <label for="new-microsite-google_font">/!\ respecter la casse (ex : <input type="text" value='<link href="https://fonts.googleapis.com/css?family=IBM+Plx+Serif" rel="stylesheet">' class="balise_exemple" disabled/>)</label>
+                    <input class="new-microsite-name" id="upload-microsite-google_font" type="text" name="google_font" required="" placeholder="{{static['google_font']}}" aria-describedby="tip-new-microsite-name tip-error-new-microsite-google_font" ng-model="update_static['google_font']" >
+                    <span class="tip tip-error is-hiding" id="tip-error-new-microsite-google_font"></span>
+                  </li>
+                  <!-- couleur logo -->
+                  <li class="field file required" id="field-microsite-logo">
+                    <label for="new-microsite-logo">Logo</label>
+                    <img class="form_img" src="https://the-mooc-agency.com{{static['logo_image_url']}}"/>
+                    <input class="new-microsite-logo" id="upload-microsite-logo" type="file" name="logo" required="" aria-describedby="tip-new-microsite-logo tip-error-new-microsite-logo" files-input ng-model="update_static['logo']">
+                    <span class="tip tip-error is-hiding" id="tip-error-new-microsite-logo"></span>
+                  </li>
+                  <!-- couleur bg -->
+                  <li class="field file required" id="field-microsite-logo">
+                    <label for="new-microsite-fond">background Image</label>
+                    <img class="form_img" src="https://the-mooc-agency.com{{static['bg_img']}}"/>
+                    <input class="new-microsite-logo" id="upload-microsite-fond" type="file" name="fond" required="" aria-describedby="tip-new-microsite-fond tip-error-new-microsite-fond" files-input ng-model="update_static['fond']">
+                    <span class="tip tip-error is-hiding" id="tip-error-new-microsite-fond"></span>
+                  </li>
+                  <!-- couleur favicon -->
+                  <li class="field file required" id="field-microsite-favicon">
+                    <label for="new-microsite-fond">favicon</label>
+                    <img class="form_img" src="https://the-mooc-agency.com{{static['favicon']}}"/>
+                    <input class="new-microsite-logo" id="upload-microsite-favicon" type="file" name="favicon" required="" aria-describedby="tip-new-microsite-favicon tip-error-new-microsite-favicon" files-input ng-model="update_static['favicon']">
+                    <span class="tip tip-error is-hiding" id="tip-error-new-microsite-favicon"></span>
+                  </li>
+                </ol>
+              </fieldset>
+            </form>
+            <!-- advanced -->
+            <form class="form-create create-microsite microsite-info" id="update-microsite-form" name="update-microsite-form" enctype="multipart/form-data" ng-if="n == 'advanced'">
+              <fieldset>
+                <legend class="sr">Informations avancées :</legend>
+                <ol class="list-input">
+                  <li class="field text" id="field-microsite-{{_advanced.name}}" ng-repeat="_advanced in advanced">
+                    <label for="new-microsite-{{_advanced.name}}">{{_advanced.name}}</label>
+                    <!-- if text -->
+                    <input ng-if="_advanced.type == 'text'" class="new-microsite-{{_advanced.name}}" id="upload-microsite-{{_advanced.name}}" type="text" name="{{_advanced.name}}" required="" placeholder="{{_advanced[_advanced.name]}}" aria-describedby="tip-new-microsite-name tip-error-new-microsite-{{_advanced.name}}" value="" ng-model="update_advanced[_advanced.name]">
+                    <!-- enf id -->
+                    <span class="tip tip-error is-hiding" id="tip-error-new-microsite-{{_static.name}}"></span>
+                  </li>
+                </ol>
+              </fieldset>
+            </form>
+            <!-- honor -->
+            <div ng-if="n == 'honor'" ng-controller="viewHonor" class="codemiror_views">
+              <section class="codemirrorContent" id="honorSelect">
+              <!--
+                <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="$parent.honor_editor.template" ng-if="$parent.codemirrorHonor"></ui-codemirror>
+              -->
+              <div ui-codemirror="editorOptions" ng-model="$parent.honor_editor.template" ui-refresh='$parent.refreshHonor'></div>
+              </section>
+              <div class="actions">
+                <input type="submit" value="Update Honor" class="action action-primary new-microsite-save" ng-click="submit_honor()">
+              </div>
+            </div>
+            <!-- cgu -->
+            <div ng-if="n == 'tos'" ng-controller="viewCgu" class="codemiror_views">
+              <section class="codemirrorContent" id="cguSelect">
+              <!--
+                <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="$parent.cgu_editor.template" ng-if="$parent.codemirrorCgu"></ui-codemirror>
+              -->
+                <div ui-codemirror="editorOptions" ng-model="$parent.cgu_editor.template" ui-refresh='$parent.refreshCgu'></div>
+              </section>
+              <div class="actions">
+                <input type="submit" value="Update Cgu" class="action action-primary new-microsite-save" ng-click="submit_cgu()">
+              </div>
+            </div>
+            <!-- faq -->
+            <div ng-if="n == 'faq'" ng-controller="viewFaq" class="codemiror_views">
+              <section class="codemirrorContent" id="faqSelect">
+              <!--
+                <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="$parent.cgu_editor.template" ng-if="$parent.codemirrorCgu"></ui-codemirror>
+              -->
+                <div ui-codemirror="editorOptions" ng-model="$parent.faq_editor.template" ui-refresh='$parent.refreshFaq'></div>
+              </section>
+              <div class="actions">
+                <input type="submit" value="Update Faq" class="action action-primary new-microsite-save" ng-click="submit_faq()">
+              </div>
+            </div>
+            <!-- administration -->
+            <div ng-if="n == 'administration'" ng-controller="viewAdministration" class="administration_views">
+              <div id="admin_fields">
+                <div class="admin_fields" ng-repeat="row in models.staff">
+                    <input type="checkbox" ng-model="row.admin" ng-change="adminChange()" />
+                    <label>{{row.email}}</label>
+                </div>
+              </div>
+            </div>
+            <!-- end -->
+            <div class="actions" ng-if="n == 'static' || n == 'advanced'">
+              <input type="submit" value="Update static" class="action action-primary new-microsite-save" ng-click="submit_update_static()" ng-if="n == 'static'">
+              <input type="submit" value="Update advanced" class="action action-primary new-microsite-save" ng-click="submit_update_advanced()" ng-if="n == 'advanced'">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

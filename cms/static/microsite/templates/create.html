@@ -1,0 +1,61 @@
+<div class="wrapper-create-element wrapper-create-microsite is-shown">
+  <form class="form-create create-microsite microsite-info" id="create-microsite-form" name="create-microsite-form" enctype="multipart/form-data">
+    <div class="wrap-error">
+      <div id="microsite_creation_error" name="microsite_creation_error" class="message message-status message-status error" role="alert">
+        <p>Please correct the highlighted fields below.</p>
+      </div>
+    </div>
+    <div class="wrapper-form">
+      <h3 class="title">Creer un Microsite</h3>
+
+      <fieldset>
+        <legend class="sr">Informations requises :</legend>
+
+        <ol class="list-input">
+          <li class="field text required" id="field-microsite-name">
+            <label for="new-microsite-name">Microsite prefix</label>
+            <input class="new-microsite-name" id="new-microsite-name" type="text" name="display_name" required="" placeholder="e.g. XYZ" aria-describedby="tip-new-microsite-name tip-error-new-microsite-name" ng-model="create.display_name">
+            <span class="tip tip-error is-hiding" id="tip-error-new-microsite-name"></span>
+          </li>
+          <li class="field file required" id="field-microsite-logo">
+            <label for="new-microsite-logo">Logo</label>
+            <input class="new-microsite-logo" id="new-microsite-logo" type="file" name="logo" required="" aria-describedby="tip-new-microsite-logo tip-error-new-microsite-logo" files-input ng-model="create.logo">
+            <span class="tip tip-error is-hiding" id="tip-error-new-microsite-logo"></span>
+          </li>
+          <li class="field file required" id="field-microsite-logo">
+            <label for="new-microsite-fond">background Image</label>
+            <input class="new-microsite-logo" id="new-microsite-fond" type="file" name="fond" required="" aria-describedby="tip-new-microsite-fond tip-error-new-microsite-fond" files-input ng-model="create.fond">
+            <span class="tip tip-error is-hiding" id="tip-error-new-microsite-fond"></span>
+          </li>
+          <li class="field file required" id="field-microsite-favicon">
+            <label for="new-microsite-fond">favicon</label>
+            <input class="new-microsite-logo" id="new-microsite-favicon" type="file" name="favicon" required="" aria-describedby="tip-new-microsite-favicon tip-error-new-microsite-favicon" files-input ng-model="create.favicon">
+            <span class="tip tip-error is-hiding" id="tip-error-new-microsite-favicon"></span>
+          </li>
+          <li class="field color required" id="field-microsite-new-microsite-primary_color">
+            <label for="new-microsite-new-microsite-primary_color">Couleur primaire</label>
+            <input type="text" class="new-microsite-new-microsite-primary_color" id="new-microsite-primary_color" name="primary_color" required="" aria-describedby="tip-new-microsite-new-microsite-primary_color tip-error-new-microsite-new-microsite-primary_color" ng-model="create.primary_color">
+            <span class="tip tip-error is-hiding" id="tip-error-new-microsite-new-microsite-primary_color"></span>
+          </li>
+          <li class="field google_font required" id="field-microsite-new-microsite-google_font">
+            <label for="new-microsite-new-microsite-google_font">Google Font</label>
+            <label for="new-microsite-google_font">/!\ respecter la casse (ex : <input type="text" value='<link href="https://fonts.googleapis.com/css?family=IBM+Plx+Serif" rel="stylesheet">' class="balise_exemple" disabled/>)</label> 
+            <input type="text" class="new-microsite-new-microsite-google_font" id="new-microsite-google_font" name="google_font" required="" aria-describedby="tip-new-microsite-new-microsite-google_font tip-error-new-microsite-new-microsite-google_font" ng-model="create.google_font">
+            <span class="tip tip-error is-hiding" id="tip-error-new-microsite-new-microsite-google_font"></span>
+          </li>
+          <li class="field select required" id="field-microsite-language">
+            <input type="hidden" id="csrf_token" name="csrfmiddlewaretoken" value="Pk4rfUS0ea5LpsHOnRyt5DELzIHQVpa4">
+            <label for="new-microsite-language">Langue</label>
+            <select class="input new-microsite-language select language-selector" id="language-value" name="language_code" ng-model="create.language">
+              <option value="fr">Français</value>
+              <option value="en">English</value>
+            </select>
+          </li>
+        </ol>
+      </fieldset>
+    </div>
+    <div class="actions">
+      <input type="submit" value="Create" class="action action-primary new-microsite-save" ng-click="submit()">
+    </div>
+  </div>
+</form>

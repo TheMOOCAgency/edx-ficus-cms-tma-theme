@@ -1,0 +1,95 @@
+<%page expression_filter="h"/>
+<%!
+from django.utils.translation import ugettext as _
+
+from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_string
+%>
+<%inherit file="base.html" />
+
+<%def name="online_help_token()"><% return "home" %></%def>
+<%block name="title">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</%block>
+<%block name="bodyclass">is-signedin index view-dashboard</%block>
+<%namespace name='static' file='static_content.html'/>
+<%block name="content">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://the-mooc-agency.com/media/dev/tma_advanced_settings/static/tma_advanced_settings.css">
+<style>
+.submenu {
+  padding-left: 10px;
+  width: 100%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: none;
+  border-radius: 0;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #6c757d;
+  color: #fff;
+  outline: none;
+}
+.isactive {
+  background-color: #007bff;
+  color: #fff;
+}
+#upload_context {
+  margin-top: 50px;
+}
+.certif_img {
+  display:block;
+  height: auto;
+  max-height: 300px;
+}
+.loader,.sub_loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  background-color: #fff;
+  z-index: 1000;
+}
+#loader,#sub_loader {
+  width:150px;
+  height:150px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  background-image:url('https://the-mooc-agency.com/media/dev/tma_advanced_settings/static/loader.gif');
+  background-size: cover;
+  background-position: center;
+}
+.sub_loader {
+  background-color: transparent;
+}
+
+#view_content {
+  position: relative;
+  min-height: 300px;
+  height: auto;
+}
+</style>
+<div class="container" id="content_tma">
+  <div class="row">
+    <div id="app" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    </div>
+  </div>
+</div>
+
+<!-- add values from context -->
+<script>
+/*
+var _statics = dump_js_escaped_json(statics) | n, decode.utf8;
+*/
+var course_id = "${course_id}";
+var organisation = "${org}";
+var site_name = "sncf.${settings.LMS_BASE}";
+//templates
+</script>
+<!-- requirejs -->
+<script src="https://the-mooc-agency.com/media/dev/tma_advanced_settings/static/dist/main-528d9de4cbbc738ebffa.js"></script>
+
+</%block>

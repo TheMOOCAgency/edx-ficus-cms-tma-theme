@@ -1,0 +1,128 @@
+#app_container {
+  width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#microsite_manager_nav {
+  margin-top: 25px;
+  width: calc(100% - 60px);
+  margin-left:auto;
+  margin-right:auto;
+  height: auto;
+}
+.list-courses {
+  width: calc(100% - 60px) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-top: 20px !important;
+}
+#microsite_manager_nav a {
+  width: auto;
+  line-height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: inline-block;
+  font-size: 20px;
+  color: #0075b4;
+}
+#microsite_manager_nav a:hover {
+  color: #4c4c4c;
+}
+.form_img {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+.color_exemple {
+  width: 25px;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.form-create .title {
+  width: calc(100% - 60px);
+  margin-left:auto;
+  margin-right:auto;
+}
+.CodeMirror {
+  font-size: 18px;
+  width: calc(100% - 60px);
+  /*padding: 10px;*/
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  border: 1px solid #b2b2b2;
+  background: #fff;
+}
+
+.codemirrorContent {
+  background-color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.admin_fields {
+  font-size: 18px;
+  position: relative;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.admin_fields input {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  margin-top: -10px;
+}
+.admin_fields label {
+  display: block;
+  width: calc(100% - 26px);
+  height: 25px;
+  line-height: 25px;
+  vertical-align: middle;
+  margin-left: 25px;
+  font-size: 18px;
+}
+.form-create .title {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+.form-create {
+  padding: 0;
+  margin: 20px 30px;
+  width: calc(100% - 60px);
+}
+
+.form-create .actions {
+  background: #fff;
+  border-top: none;
+}
+
+.codemiror_views .actions {
+  margin-top: 0 !important;
+  box-shadow: none !important;
+}
+header,nav {
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  width: calc(100% - 60px) !important;
+}
+.administration_views {
+  font-size: 18px;
+  width: calc(100% - 120px);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  border: 1px solid #b2b2b2;
+  background: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+}

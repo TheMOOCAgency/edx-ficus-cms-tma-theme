@@ -1,0 +1,15 @@
+<div>
+  <ul class="list-courses">
+            <li class="course-item" data-microsite-id="n.microsite_id" ng-repeat="n in base_models">
+              <a class="course-link" href="#/views/{{n.microsite_id}}">
+                <h3 class="course-title">{{n.site_name}}</h3>
+
+                <div class="course-metadata">
+                  <span class="course-org metadata-item">
+                    <span class="label">prefix:</span> <span class="value">{{n.microsite_key}}</span>
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
+</div>

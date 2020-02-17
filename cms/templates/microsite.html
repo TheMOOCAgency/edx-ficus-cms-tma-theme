@@ -1,0 +1,91 @@
+<%page expression_filter="h"/>
+<%!
+from django.utils.translation import ugettext as _
+
+from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_string
+import datetime
+%>
+<%inherit file="base.html" />
+
+<%def name="online_help_token()"><% return "home" %></%def>
+<%block name="title">${_("{studio_name} Home").format(studio_name=settings.STUDIO_SHORT_NAME)}</%block>
+<%block name="bodyclass">is-signedin index view-dashboard</%block>
+<%namespace name='static' file='static_content.html'/>
+<%block name="content">
+<!--
+<link rel="stylesheet" type="text/css" href="https://the-mooc-agency.com/media/dev/microsite/css/codemirror.css" />
+-->
+<style>
+label .balise_exemple {
+  width: auto !important;
+  display: inline !important;
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  background-image: none !important;
+  min-width: 650px !important;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.33.0/codemirror.min.css" />
+<link rel="stylesheet" href="${static.url('microsite/css/css.css')}">
+<div ng-app="microsite_manager" id="app_container">
+
+  <div id="microsite_manager_nav">
+    <a class="nav-item nav-link active" href="#/">Index</a>
+    <a class="nav-item nav-link" href="#/create">Creer</a>
+  </div>
+
+  <div ng-view></div>
+
+</div>
+<!-- add values from context -->
+<script>
+var _base_models = ${dump_js_escaped_json(base_model) | n, decode.utf8};
+var _statics = ${dump_js_escaped_json(statics) | n, decode.utf8};
+//templates
+var _index_template = "${static.url('microsite/templates/index.html')}";
+var _create_template = "${static.url('microsite/templates/create.html')}";
+var _views_template = "${static.url('microsite/templates/views.html')}";
+</script>
+<!-- requirejs -->
+<!--
+<script src='src="${static.url("common/js/vendor/require.js")}"' data-main="https://the-mooc-agency.com/media/dev/microsite/main.js"></script>
+-->
+<%
+timestamps = str(datetime.datetime.now().strftime("%s"))
+%>
+<!--
+<script src="https://the-mooc-agency.com/media/dev/microsite/libs/angular.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/libs/angular-route.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/libs/angular-cookies.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/libs/codemirror.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/libs/xml.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/libs/ui-codemirror/src/ui-codemirror.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/index.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/create.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/views.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/views/viewCgu.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/views/viewHonor.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/views/viewFaq.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/controller/views/viewAdministration.js?${timestamps}"></script>
+<script src="https://the-mooc-agency.com/media/dev/microsite/app.js?${timestamps}"></script>
+-->
+
+<script src="${static.url('microsite/libs/angular.js')}"></script>
+<script src="${static.url('microsite/libs/angular-route.js')}"></script>
+<script src="${static.url('microsite/libs/angular-cookies.js')}"></script>
+<script src="${static.url('microsite/libs/codemirror.js')}"></script>
+<script src="${static.url('microsite/libs/xml.js')}"></script>
+<script src="${static.url('microsite/libs/ui-codemirror/src/ui-codemirror.js')}"></script>
+<script src="${static.url('microsite/controller/index.js')}"></script>
+<script src="${static.url('microsite/controller/create.js')}"></script>
+<script src="${static.url('microsite/controller/views.js')}"></script>
+<script src="${static.url('microsite/controller/views/viewCgu.js')}"></script>
+<script src="${static.url('microsite/controller/views/viewHonor.js')}"></script>
+<script src="${static.url('microsite/controller/views/viewFaq.js')}"></script>
+<script src="${static.url('microsite/controller/views/viewsAbout.js')}"></script>
+<script src="${static.url('microsite/controller/views/viewAdministration.js')}"></script>
+<script src="${static.url('microsite/app.js')}"></script>
+
+</%block>
